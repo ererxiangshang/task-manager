@@ -1,0 +1,398 @@
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --line: #e6ebf0;
+  --text: #1f2a37;
+  --muted: #6b7787;
+  --accent: #0f766e;
+  --accent-soft: #e6f4f2;
+  --danger: #d14343;
+  --high: #e05252;
+  --high-bg: #fdeeee;
+  --mid: #c47b04;
+  --mid-bg: #fdf3e0;
+  --low: #2f8f5b;
+  --low-bg: #e9f6ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 10% -10%, #e8f3f1 0%, transparent 60%),
+    radial-gradient(700px 400px at 100% 0%, #eef1f7 0%, transparent 55%),
+    var(--bg);
+}
+
+.app {
+  width: min(760px, 100% - 32px);
+  margin: 0 auto;
+  padding: 56px 0 48px;
+}
+
+/* 顶部标题 */
+.hero {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(26px, 5vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* 添加任务 */
+.composer {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(23, 42, 58, 0.07);
+}
+
+.task-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: var(--text);
+  background: #f8fafb;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.task-input::placeholder {
+  color: #a3adba;
+}
+
+.task-input:focus {
+  background: #fff;
+  border-color: #b9d7d3;
+}
+
+.priority-select {
+  flex: 0 0 auto;
+  padding: 12px 10px;
+  font-size: 14px;
+  color: var(--text);
+  background: #f8fafb;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.priority-select:focus {
+  border-color: #b9d7d3;
+}
+
+.add-button {
+  flex: 0 0 auto;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.add-button:hover:not(:disabled) {
+  background: #0b645e;
+}
+
+.add-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.add-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* 错误提示 */
+.error-banner {
+  margin-top: 14px;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: #8d2b2b;
+  background: #fdeeee;
+  border: 1px solid #f4d2d2;
+  border-radius: 10px;
+}
+
+/* 工具栏 */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 26px 2px 14px;
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: #eef2f5;
+  border-radius: 11px;
+}
+
+.filter-chip {
+  padding: 7px 15px;
+  font-size: 13px;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.filter-chip:hover {
+  color: var(--text);
+}
+
+.filter-chip.active {
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgba(23, 42, 58, 0.08);
+}
+
+.stats {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* 任务列表 */
+.task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.task-item:hover {
+  transform: translateY(-1px);
+  border-color: #dbe3ea;
+  box-shadow: 0 8px 22px rgba(23, 42, 58, 0.08);
+}
+
+.task-item.done {
+  background: #fbfcfd;
+}
+
+/* 圆形勾选按钮 */
+.check-button {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  color: transparent;
+  background: transparent;
+  border: 1.5px solid #cfd8e1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.check-button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: rgba(15, 118, 110, 0.35);
+}
+
+.task-item.done .check-button {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.check-button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.check-icon {
+  display: grid;
+  place-items: center;
+}
+
+/* 标题与标签 */
+.task-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.task-title {
+  font-size: 15px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.task-item.done .task-title {
+  color: #98a2b0;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag {
+  padding: 2px 8px;
+  font-size: 11px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.tag-high {
+  color: var(--high);
+  background: var(--high-bg);
+}
+
+.tag-mid {
+  color: var(--mid);
+  background: var(--mid-bg);
+}
+
+.tag-low {
+  color: var(--low);
+  background: var(--low-bg);
+}
+
+.status-text {
+  font-size: 11px;
+  color: #97a1ae;
+}
+
+.task-item.done .status-text {
+  color: #a9b4c0;
+}
+
+/* 删除按钮 */
+.delete-button {
+  flex: 0 0 auto;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: #9aa5b1;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.delete-button:hover:not(:disabled) {
+  color: var(--danger);
+  background: #fdf1f1;
+  border-color: #f5dede;
+}
+
+.delete-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* 空状态与加载 */
+.state-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 46px 24px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px dashed #dde4eb;
+  border-radius: 16px;
+}
+
+.state-title {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.state-hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.footer {
+  margin-top: 34px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #8b96a4;
+  text-align: center;
+}
+
+/* 移动端适配 */
+@media (max-width: 560px) {
+  .app {
+    padding-top: 34px;
+  }
+
+  .composer {
+    flex-direction: column;
+  }
+
+  .task-input,
+  .priority-select,
+  .add-button {
+    width: 100%;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
